@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南魚沼スマート観光・文化イノベーションハブ - 10年ビジョンプラン</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .slide-content {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            min-height: calc(100vh - 4rem);
+            overflow: auto;
+        }
+        .slide.active {
+            display: block;
+        }
+        .gradient-blue {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+        }
+        .gradient-green {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+        }
+        .title-slide .slide-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #0284c7);
+            color: white;
+        }
+        .section-slide .slide-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+        .card {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .problem-card {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .solution-card {
+            background-color: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .bullet-point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .bullet-point svg {
+            flex-shrink: 0;
+            margin-right: 0.5rem;
+            color: #3b82f6;
+        }
+        .bullet-point-content {
+            flex: 1;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .nav-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-buttons button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .nav-buttons button:hover {
+            background-color: #2563eb;
+        }
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            stroke-width: 0;
+            stroke: currentColor;
+            fill: currentColor;
+            margin-right: 0.5rem;
+        }
+        .icon-large {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+        }
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .timeline-item {
+            padding-left: 2.5rem;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 2rem;
+            height: calc(100% + 1rem);
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        .timeline-item:nth-child(1):before {
+            content: '1';
+        }
+        .timeline-item:nth-child(2):before {
+            content: '2';
+        }
+        .timeline-item:nth-child(3):before {
+            content: '3';
+        }
+        @media print {
+            .slide {
+                display: block;
+                page-break-after: always;
+                min-height: auto;
+            }
+            .slide-content {
+                min-height: auto;
+                box-shadow: none;
+            }
+            .nav-buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- タイトルスライド -->
+        <div class="slide title-slide active" id="slide-1">
+            <div class="slide-content">
+                <h1 class="text-5xl font-bold mb-6">南魚沼スマート観光・文化イノベーションハブ</h1>
+                <h2 class="text-3xl font-semibold">10年ビジョンプラン</h2>
+            </div>
+        </div>
+
+        <!-- エグゼクティブサマリー -->
+        <div class="slide" id="slide-2">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">0. エグゼクティブサマリー</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card problem-card">
+                        <h3 class="text-xl font-bold mb-4 text-red-700">未解決課題</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-red-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">認知度不足:</span> 日本地方都市は海外からの認知度が低く、特に外国人旅行者向けの情報発信が不十分。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-red-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">季節依存:</span> 冬季のスキーリゾートに依存し、他の季節の魅力が十分に活かされていない。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-red-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">独自体験不足:</span> 地域の歴史、伝統、農産物（特にお米）を活かした体験プログラムが不足しており、他地域との差別化ができていない。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-red-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">デジタル化の遅れ:</span> 多言語対応のオンライン予約システムやデジタル情報発信プラットフォームが未整備。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card solution-card">
+                        <h3 class="text-xl font-bold mb-4 text-green-700">解決策とターゲット</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">解決策:</span> デジタル統合プラットフォームの構築と、年間を通じた多彩な体験プログラムの提供。特に、南魚沼市の強みである高品質なお米を活かした温泉体験や伝統文化、農業体験を軸に、独自の観光資源を創出します。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                <span class="font-semibold">主要ターゲット:</span> ニセコなどに訪れる外国人旅行者を中心に、日本国内外の健康・美容志向の顧客層もターゲットとし、主要都市および海外市場への集中的なプロモーションを展開します。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 市場背景と課題認識 (セクションスライド) -->
+        <div class="slide section-slide" id="slide-3">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                <h2 class="text-4xl font-bold mb-4">1. 市場背景と課題認識</h2>
+            </div>
+        </div>
+
+        <!-- 市場背景と課題認識 (コンテンツスライド) -->
+        <div class="slide" id="slide-4">
+            <div class="slide-content bg-blue-50">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">1. 市場背景と課題認識</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-700">市場背景</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                日本は外国人旅行者の注目を集める観光大国であり、特に北海道・ニセコなどが人気。しかし、地方都市の中にはまだ認知度が低く、ポテンシャルが十分に活かされていないエリアも存在します。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-700">課題認識</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                南魚沼市は豊かな自然、歴史、伝統文化、農産物（お米）など独自の魅力を有するが、情報発信や体験プログラムが不足しているため、訪問計画が立てにくい状況です。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                季節ごとの魅力が分散しており、年間を通じた集客モデルが構築されていません。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- コンセプト概要 (セクションスライド) -->
+        <div class="slide section-slide" id="slide-5">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <h2 class="text-4xl font-bold mb-4">2. コンセプト概要</h2>
+            </div>
+        </div>
+
+        <!-- コンセプト概要 (コンテンツスライド) -->
+        <div class="slide" id="slide-6">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">2. コンセプト概要</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    南魚沼市の強みである自然美、歴史、伝統文化、そして高品質な農産物（特にお米）を、最新のデジタル技術と体験型プログラムで融合させ、以下の2本柱で事業を推進します。
+                </p>
+                
+                <div class="card-grid mb-8">
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">拠点施設</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            季節ごとの多彩な体験（スキー、ハイキング、伝統文化、農業体験、そしてお米を活かした温泉体験）を一箇所に集約した多機能施設。
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">オンラインプラットフォーム</h3>
+                        </div>
+                        <p class="text-gray-700">
+                            多言語対応の予約システムやVR・AR体験ツアー、SNS連動プロモーションにより、外国人旅行者を含む国内外の顧客に対して事前体験や情報提供を実施。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card bg-blue-50">
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">来訪者目標</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度：新規来訪者約30,000人</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">3年目：年間約100,000人</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">10年後：年間約500,000人</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-green-50">
+                        <h3 class="text-xl font-bold mb-4 text-green-700">初期投資と収益目標</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初期投資：約10億円</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度売上：約2億円</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">5年以内：約8億円</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">10年後：約15億円（全体利益率15%を目標）</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要事業コンポーネント (セクションスライド) -->
+        <div class="slide section-slide" id="slide-7">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <h2 class="text-4xl font-bold mb-4">3. 主要事業コンポーネント</h2>
+            </div>
+        </div>
+
+        <!-- デジタル統合プラットフォーム -->
+        <div class="slide" id="slide-8">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">3. 主要事業コンポーネント - A. デジタル統合プラットフォーム</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">オンライン予約・情報発信</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">多言語対応の予約システムで、外国人旅行者を中心にアプローチ。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">転換率約10%、平均取引額8,000円を目指す。</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">VR・AR体験ツアー</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">歴史的街並み、自然景観、温泉施設などの仮想体験がサイト上でできる。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度約20,000ユーザー、5年後に約100,000ユーザー獲得を目標。</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">データ分析</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">来訪者データのリアルタイム収集とプログラム改善への迅速な反映。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- シーズン別・体験型プログラム -->
+        <div class="slide" id="slide-9">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">3. 主要事業コンポーネント - B. シーズン別・体験型プログラム</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="card bg-blue-50">
+                        <h3 class="text-xl font-bold mb-3 text-blue-700">冬</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">石打丸山、上越国際、舞子スノーリゾート、三国山との連携。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">年間40回のイベント（各回80人参加）で合計約3,200人の参加を見込む。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-green-50">
+                        <h3 class="text-xl font-bold mb-3 text-green-700">春・夏</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">ハイキング、登山、自然観察、及び農業体験（稲作、水田アート、スイカ狩り）を月1～2回開催。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-green-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">年間20回で平均120人参加、合計約2,400人の参加を想定。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-yellow-50">
+                        <h3 class="text-xl font-bold mb-3 text-yellow-700">秋</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-yellow-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">紅葉狩り、伝統文化体験（江戸時代の街並み再現、郷土料理教室、和紙作り体験）を年20回実施。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-yellow-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">各回80人参加、年間約1,600人を目指す。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 地域連携と持続可能性 -->
+        <div class="slide" id="slide-10">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">3. 主要事業コンポーネント - C. 地域連携と持続可能性</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">パートナーシップ</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度：スキーリゾート、温泉施設、農家、伝統工芸団体、国際大学など約10社と連携。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">10年後：30社以上に拡大。</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">地域雇用創出</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度：約20名、10年後：100名以上。</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">エコ＆インフラ</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">年間約1億円規模の投資で、エコフレンドリーな設備と地域参加型プログラム（ガイドツアー、ホームステイ）を実現。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- お米の成分を活用した温泉体験 -->
+        <div class="slide" id="slide-11">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">3. 主要事業コンポーネント - D. お米の成分を活用した温泉体験</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="card bg-yellow-50">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-700">温泉効果</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-yellow-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                コシヒカリ、あきたこまち、ひとめぼれなどの保湿成分、ゆめぴりか、つや姫、ななつぼし由来のアンチエイジング効果。
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-blue-50">
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">事業展開</h3>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                ハブ施設内または提携温泉施設に「お米温泉エリア」を設置。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                初年度：月間利用者約500人、年間約6,000人、利用単価約3,000円。
+                            </div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">
+                                ワークショップ：月2回、各回20名、年間480名参加、受講料平均5,000円。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ビジネスモデルと収益性 (セクションスライド) -->
+        <div class="slide section-slide" id="slide-12">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <h2 class="text-4xl font-bold mb-4">4. ビジネスモデルと収益性</h2>
+            </div>
+        </div>
+
+        <!-- ビジネスモデルと収益性 (コンテンツスライド) -->
+        <div class="slide" id="slide-13">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">4. ビジネスモデルと収益性 - 主な収益源</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="card bg-blue-50">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            <h3 class="text-lg font-bold ml-2 text-blue-700">体験プログラム受講料</h3>
+                        </div>
+                        <p class="text-gray-700">平均参加費約5,000円、年間総参加者約7,200人 → 約3,600万円。</p>
+                    </div>
+                    
+                    <div class="card bg-blue-50">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <h3 class="text-lg font-bold ml-2 text-blue-700">施設利用・宿泊収入</h3>
+                        </div>
+                        <p class="text-gray-700">宿泊施設：20室、平均稼働率70%、1室あたり1泊15,000円、年間約5,000室稼働 → 約7,500～8,000万円。</p>
+                    </div>
+                    
+                    <div class="card bg-blue-50">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                            <h3 class="text-lg font-bold ml-2 text-blue-700">フード＆ドリンク</h3>
+                        </div>
+                        <p class="text-gray-700">カフェ・レストラン：1日平均売上約10万円、300営業日 → 約3,000万円。</p>
+                    </div>
+                    
+                    <div class="card bg-blue-50">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <h3 class="text-lg font-bold ml-2 text-blue-700">デジタルプラットフォーム</h3>
+                        </div>
+                        <p class="text-gray-700">予約手数料・広告、コラボ商品販売で年間約1,500～2,000万円。</p>
+                    </div>
+                    
+                    <div class="card bg-blue-50">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                            <h3 class="text-lg font-bold ml-2 text-blue-700">地域産品ブランド化</h3>
+                        </div>
+                        <p class="text-gray-700">地元特産品の直販・体験イベント連動で、年間約3,000～4,000万円。</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-green-50 p-6">
+                    <h3 class="text-xl font-bold mb-4 text-green-700">全体収益の見通し</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="stat-card">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600">初年度</p>
+                            <p class="text-2xl font-bold text-green-700">約2億円前後</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600">5年以内</p>
+                            <p class="text-2xl font-bold text-green-700">約8億円</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <p class="text-lg font-medium text-gray-600">10年後</p>
+                            <p class="text-2xl font-bold text-green-700">約15億円（利益率15%）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成長ロードマップ (セクションスライド) -->
+        <div class="slide section-slide" id="slide-14">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <h2 class="text-4xl font-bold mb-4">5. 成長ロードマップ</h2>
+            </div>
+        </div>
+
+        <!-- 成長ロードマップ (コンテンツスライド) -->
+        <div class="slide" id="slide-15">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">5. 成長ロードマップ</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-blue-700 mb-2">フェーズ1（初期～3年）: 基盤整備とパイロット運用</h3>
+                        <div class="card bg-blue-50 p-4">
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    投資: 約10億円の初期投資でハブ施設とデジタルプラットフォームを構築。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    来訪者: 初年度30,000人、3年目に年間約100,000人。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    パートナー: 約10社との協働体制を確立。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    売上: 初年度約2億円。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-blue-700 mb-2">フェーズ2（4～7年）: プログラム拡大とブランディング強化</h3>
+                        <div class="card bg-blue-50 p-4">
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    来訪者: 7年目に年間来訪者数約250,000～300,000人。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    イベント: 年間イベント数の増加で総参加者数約7,200人以上。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    売上: 年商約8億円。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    パートナー: 連携団体を30社以上に増加。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold text-blue-700 mb-2">フェーズ3（8～10年）: 地域モデルの確立と持続的発展</h3>
+                        <div class="card bg-blue-50 p-4">
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    来訪者: 10年後に年間来訪者数約500,000人。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    オンラインユーザー: プラットフォーム利用者を100,000～150,000人に成長。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    地域雇用: 100名以上の新規雇用を創出。
+                                </div>
+                            </div>
+                            <div class="bullet-point">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <div class="bullet-point-content">
+                                    売上: 年商約15億円、利益率15%を実現。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 実施戦略とリスク対策 (セクションスライド) -->
+        <div class="slide section-slide" id="slide-16">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <h2 class="text-4xl font-bold mb-4">6. 実施戦略とリスク対策</h2>
+            </div>
+        </div>
+
+        <!-- 実施戦略とリスク対策 (コンテンツスライド) -->
+        <div class="slide" id="slide-17">
+            <div class="slide-content">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">6. 実施戦略とリスク対策</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">認知度向上</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">初年度広告予算5,000～7,000万円を主要都市（東京、大阪、名古屋）および海外市場向けに投入。</div>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">外国人向けプロモーションとして、旅行系インフルエンサーや旅行エージェントとの連携を強化。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">年間魅力発信</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">季節ごとの特色を活かしたイベント・プログラムで、リピート率30%を維持。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">地域・環境共生</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">年間約1億円規模のエコインフラ投資、地域住民参加型プログラムで持続可能な発展を支援。</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            <h3 class="text-xl font-semibold ml-3 text-blue-700">技術と研究</h3>
+                        </div>
+                        <div class="bullet-point">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon text-blue-600"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <div class="bullet-point-content">お米温泉技術の研究開発に初年度約5,000～7,000万円を投入し、3年以内に効果検証と改善を実施。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 結論 (セクションスライド) -->
+        <div class="slide section-slide" id="slide-18">
+            <div class="slide-content">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-large"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <h2 class="text-4xl font-bold mb-4">7. 結論</h2>
+            </div>
+        </div>
+
+        <!-- 結論 (コンテンツスライド) -->
+        <div class="slide" id="slide-19">
+            <div class="slide-content bg-gradient-to-br from-blue-50 to-indigo-50">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">7. 結論</h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    本プランは、南魚沼市の豊かな自然、歴史、文化、そして高品質なお米という多面的な強みを最大限に活用し、デジタル技術と体験型プログラムを融合することで、
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="card">
+                        <div class="text-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-blue-600"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <p class="text-center text-gray-700">
+                            初年度約<span class="font-bold text-blue-700">30,000人</span>、10年後には年間約<span class="font-bold text-blue-700">500,000人</span>の来訪者数を実現
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="text-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-green-600"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <p class="text-center text-gray-700">
+                            初期投資約<span class="font-bold text-green-700">10億円</span>から、10年後に約<span class="font-bold text-green-700">15億円</span>の売上を達成
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="text-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-purple-600"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <p class="text-center text-gray-700">
+                            地域パートナーシップは10社から<span class="font-bold text-purple-700">30社以上</span>に拡大、地域雇用は<span class="font-bold text-purple-700">100名以上</span>創出
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card mt-6">
+                    <p class="text-gray-700 leading-relaxed">
+                        さらに、お米の成分を活用した温泉体験は、保湿とアンチエイジング効果を前面に打ち出し、特にニセコに訪れる外国人旅行者を含む国内外の健康・美容志向の顧客から高い支持を獲得。 
+                    </p>
+                    <p class="text-gray-700 leading-relaxed mt-4 font-semibold">
+                        これにより、南魚沼市は持続可能な観光開発と地域経済活性化のモデルケースとして、国内有数の観光地として確固たる地位を築くことが期待されます。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最終スライド -->
+        <div class="slide" id="slide-20">
+            <div class="slide-content bg-gradient-to-br from-blue-600 to-indigo-800">
+                <div class="flex flex-col items-center justify-center h-full text-white">
+                    <h2 class="text-4xl font-bold mb-6 text-center">ご清聴ありがとうございました</h2>
+                    <p class="text-xl text-center">南魚沼スマート観光・文化イノベーションハブ</p>
+                    <p class="text-xl text-center">10年ビジョンプラン</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <button id="prev-btn">前へ</button>
+        <button id="next-btn">次へ</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlideIndex = 0;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+                currentSlideIndex = index;
+            }
+
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentSlideIndex > 0) {
+                    showSlide(currentSlideIndex - 1);
+                }
+            });
+
+            document.getElementById('next-btn').addEventListener('click', function() {
+                if (currentSlideIndex < slides.length - 1) {
+                    showSlide(currentSlideIndex + 1);
+                }
+            });
+
+            // キーボードナビゲーション
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ') {
+                    if (currentSlideIndex < slides.length - 1) {
+                        showSlide(currentSlideIndex + 1);
+                    }
+                } else if (e.key === 'ArrowLeft') {
+                    if (currentSlideIndex > 0) {
+                        showSlide(currentSlideIndex - 1);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
